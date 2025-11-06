@@ -9,12 +9,11 @@ terraform {
 
 provider "docker" {}
 
-# RÃƒÂ©seau dÃƒÂ©diÃƒÂ©
 resource "docker_network" "stack_net" {
   name = "catalogue_net"
 }
 
-# Volumes PERSISTANTS Ã¢â‚¬â€ avec des NOMS STABLES (clÃƒÂ© du problÃƒÂ¨me)
+
 resource "docker_volume" "pg_data" {
   name = "pg_data"
 }
@@ -23,7 +22,6 @@ resource "docker_volume" "redis_data" {
   name = "redis_data"
 }
 
-# PostgreSQL (pas d'exposition de port)
 resource "docker_container" "postgres" {
   name  = "pg16"
   image = "postgres:16-alpine"
